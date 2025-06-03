@@ -8,9 +8,9 @@ int main() {
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
     // Atribui e inicializa variáveis
-    char estado1 = '\0';
+    char estado1[15] = "";
     char codigo_carta1[4] = "";
-    char nome_cidade1[60] = "";
+    char nome_cidade1[20] = "";
     unsigned long int populacao_cidade1 = 0;
     float area_cidade1 = 0;
     float pib_cidade1 = 0;
@@ -32,8 +32,8 @@ int main() {
     */
 
     // Solicita a representação de um estado
-    printf("Digite uma letra de A a H para representar um estado brasileiro: ");
-    scanf(" %c", &estado1);
+    printf("Digite o nome do estado brasileiro: ");
+    scanf("%s", &estado1);
     getchar();  // Limpa o '\n' no buffer
 
     // Solicita o código da carta
@@ -78,7 +78,7 @@ int main() {
 
     // Exibe os dados da carta cadastrada
     printf("Carta 1:\n");
-    printf("Estado: %c\n", estado1);
+    printf("Estado: %s\n", estado1);
     printf("Código: %s\n", codigo_carta1);
     printf("Nome da Cidade: %s\n", nome_cidade1);
     printf("População: %d\n", populacao_cidade1);
@@ -97,9 +97,9 @@ int main() {
     */
 
     // Atribui e inicializa variáveis
-    char estado2 = '\0';
+    char estado2[15] = "";
     char codigo_carta2[4] = "";
-    char nome_cidade2[60] = "";
+    char nome_cidade2[20] = "";
     unsigned long int populacao_cidade2 = 0;
     float area_cidade2 = 0;
     float pib_cidade2 = 0;
@@ -111,8 +111,8 @@ int main() {
     printf("Cadastre a segunda carta do jogo...\n");
 
     // Solicita a representação de um estado
-    printf("Digite uma letra de A a H para representar um estado brasileiro: ");
-    scanf(" %c", &estado2);
+    printf("Digite o nome do estado brasileiro: ");
+    scanf(" %s", &estado2);
     getchar();  // Limpa o '\n' no buffer
 
     // Solicita o código da carta
@@ -157,7 +157,7 @@ int main() {
 
     // Exibe os dados da carta cadastrada
     printf("Carta 2:\n");
-    printf("Estado: %c\n", estado2);
+    printf("Estado: %s\n", estado2);
     printf("Código: %s\n", codigo_carta2);
     printf("Nome da Cidade: %s\n", nome_cidade2);
     printf("População: %d\n", populacao_cidade2);
@@ -198,6 +198,20 @@ int main() {
     printf("Densidade Populacional: Carta %d venceu (%d)\n", 2 - resultado_densidade_populacional, resultado_densidade_populacional);
     printf("PIB per Capita: Carta %d venceu (%d)\n", 2 - resultado_pib_per_capita, resultado_pib_per_capita);
     printf("Super Poder: Carta %d venceu (%d)\n", 2 - resultado_super_poder, resultado_super_poder);
+
+    // Escolha de um artibuto para comparar as cartas
+    printf("%s", "Comparação de Cartas (Atributo: Pontos Turísticos):\n\n");
+    printf("Carta 1 - %s (%s): %d\n", nome_cidade1, estado1, quantidade_pontos_turisticos1);
+    printf("Carta 2 - %s (%s): %d\n", nome_cidade2, estado2, quantidade_pontos_turisticos2);
+
+    char cidade_vencedora[20] = "";
+    if (resultado_pontos_turisticos == 1) {
+        strcpy(cidade_vencedora, nome_cidade1);
+    } else {
+        strcpy(cidade_vencedora, nome_cidade2);
+    }
+
+    printf("Resultado: Carta %d (%s) venceu!", 2 - resultado_pontos_turisticos, cidade_vencedora);
 
     return 0;
 
